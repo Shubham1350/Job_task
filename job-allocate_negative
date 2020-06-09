@@ -1,0 +1,362 @@
+package com.NIC.e_Challan;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Nagative_case_joballocate {
+	static WebDriver driver;
+
+	@FindBy(xpath = "//button[@type='button']")
+	private static WebElement popup;
+
+	@FindBy(xpath = "//input[@id='userName']")
+	private static WebElement username;
+
+	@FindBy(xpath = "//span[@id='next']")
+	private static WebElement next;
+
+	@FindBy(xpath = "//input[@id='password']")
+	private static WebElement password;
+
+	@FindBy(xpath = "//button[@name='login']")
+	private static WebElement login;
+
+	@FindBy(xpath = "//i[contains(text(),'add')]")
+	public static WebElement add_icon;
+
+	@FindBy(xpath = "//i[@class='fa fa-list-ul']")
+	public static WebElement Job_allocate_icon;
+
+	@FindBy(xpath = "//a[@href='http://164.100.161.91/echallan/jobs']")
+	public static WebElement Jobs_icon;
+
+	@FindBy(xpath = "//i[@class='fa fa-plus']")
+	public static WebElement team_icon;
+
+	@FindBy(xpath = "//input[@id='teamName']")
+	public static WebElement teamName;
+
+	@FindBy(xpath = "//button[@class='dropdown-toggle ng-binding btn btn-default']")
+	public static WebElement Officers_List;
+
+	@FindBy(xpath = "//a[contains(text(),'ajay badheka')]") 
+	public static WebElement Officers_Name;
+
+	@FindBy(xpath = "//a[contains(text(),'a j vyas')]") 
+	public static WebElement Officers_Name_1;
+
+	@FindBy(xpath = "//a[contains(text(),'Uncheck All')]") 
+	public static WebElement Uncheck_All;
+
+	@FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/section[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/list-job[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[2]/div[1]/div[1]/button[1]")
+	public static WebElement Submit_Bt;
+
+	@FindBy(xpath = " //i[@class='fa fa-paperclip']")
+	public static WebElement Paper_clip;
+
+	@FindBy(xpath = "//i[@class='fa fa-calendar-plus-o']")
+	public static WebElement Calender_icon;
+
+	@FindBy(xpath = "//input[@id='autocomplete']")
+	public static WebElement address_icon;
+
+	@FindBy(xpath = "//input[@id='dateTime']")
+	public static WebElement From_date;
+
+	@FindBy(xpath = "//body[@class='loaded ng-scope']/div[4]/div[2]/div[1]/div[1]/div[18]")
+	public static WebElement select_from_time;
+
+	@FindBy(xpath = "//input[@id='toDateTime']")
+	public static WebElement To_date;
+
+	@FindBy(xpath = "//body[@class='loaded ng-scope']/div[5]/div[2]/div[1]/div[1]/div[18]")
+	public static WebElement select_To_time;
+
+	@FindBy(xpath = "//button[@id='submit']")
+	public static WebElement submit_1;
+
+
+
+	public void login () throws InterruptedException {
+
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("http://164.100.161.91/echallan/");
+		Thread.sleep(2000);
+		PageFactory.initElements(driver, this);
+		System.out.println("login");
+		popup.click();
+		Thread.sleep(4000);
+
+		username.sendKeys("rtoahmedabad01@gmail.com");
+		next.click();
+		Thread.sleep(2000);
+
+		password.sendKeys("*7BlackbirD*");
+		login.click();
+		Thread.sleep(2000);
+
+		Actions act1 = new Actions(driver);
+		act1.moveToElement(add_icon).build().perform();
+		Thread.sleep(3000);
+
+	}
+
+	public void Job_allocate () throws InterruptedException {
+
+		Jobs_icon.click();
+		Thread.sleep(2000);
+
+		add_icon.click();
+		Thread.sleep(2000);
+
+		Job_allocate_icon.click();
+		Thread.sleep(2000);
+
+		team_icon.click();
+		Thread.sleep(2000);
+
+		teamName.click();
+		Thread.sleep(2000);
+
+		Officers_List.click();
+		Thread.sleep(2000);
+
+		Officers_Name.click();
+		Thread.sleep(2000);
+
+		Submit_Bt.click();
+
+
+	}
+
+	public  void Job_withoutofficers() throws InterruptedException {
+		driver.navigate().refresh();
+		Thread.sleep(3000);
+
+		Jobs_icon.click();
+		Thread.sleep(2000);
+
+		add_icon.click();
+		Thread.sleep(2000);
+
+		Job_allocate_icon.click();
+		Thread.sleep(2000);
+
+		team_icon.click();
+		Thread.sleep(2000);
+
+		teamName.click();
+		Thread.sleep(2000);
+
+		teamName.sendKeys("ADI");
+		Thread.sleep(2000);
+
+		Officers_List.click();
+		Thread.sleep(2000);
+
+		Uncheck_All.click();
+		Thread.sleep(2000);
+
+		Submit_Bt.click();
+	}
+
+	public void Job_withInvalidname() throws InterruptedException {
+		driver.navigate().refresh();
+		Thread.sleep(3000);
+
+		Jobs_icon.click();
+		Thread.sleep(2000);
+
+		add_icon.click();
+		Thread.sleep(2000);
+
+		Job_allocate_icon.click();
+		Thread.sleep(2000);
+
+		team_icon.click();
+		Thread.sleep(2000);
+
+		teamName.click();
+		Thread.sleep(2000);
+
+		teamName.sendKeys("1000256");
+		Thread.sleep(2000);
+
+		Officers_List.click();
+		Thread.sleep(2000);
+
+		Officers_Name_1.click();
+		Thread.sleep(2000);
+
+		Submit_Bt.click();
+
+
+	}
+
+	public void Job_withInvalidaddress() throws InterruptedException {
+		driver.navigate().refresh();
+		Thread.sleep(3000);
+
+		Jobs_icon.click();
+		Thread.sleep(2000);
+
+		add_icon.click();
+		Thread.sleep(2000);
+
+		Job_allocate_icon.click();
+		Thread.sleep(2000);
+
+		team_icon.click();
+		Thread.sleep(2000);
+
+		teamName.click();
+		Thread.sleep(2000);
+
+		teamName.sendKeys("varun");
+		Thread.sleep(2000);
+
+		Officers_List.click();
+		Thread.sleep(2000);
+
+		Officers_Name.click();
+		Thread.sleep(2000);
+
+		Submit_Bt.click();
+		Thread.sleep(2000);
+
+		Paper_clip.click();
+		Thread.sleep(2000);
+
+		Calender_icon.click();
+		Thread.sleep(2000);
+
+		address_icon.sendKeys("10025");
+		Thread.sleep(2000);
+
+		From_date.click();
+		Thread.sleep(2000);
+
+		select_from_time.click();
+		Thread.sleep(2000);
+
+		To_date.click();
+		Thread.sleep(2000);
+
+		select_To_time.click();
+		Thread.sleep(2000);
+
+		submit_1.click();
+
+
+	}
+	public void Job_allocate_P () throws InterruptedException {
+
+		Jobs_icon.click();
+		Thread.sleep(2000);
+
+		add_icon.click();
+		Thread.sleep(2000);
+
+		Job_allocate_icon.click();
+		Thread.sleep(2000);
+
+		team_icon.click();
+		Thread.sleep(2000);
+
+		team_icon.sendKeys("brijesh");
+		Thread.sleep(2000);
+
+		teamName.click();
+		Thread.sleep(2000);
+
+		Officers_List.click();
+		Thread.sleep(2000);
+
+		Officers_Name.click();
+		Thread.sleep(2000);
+
+		Submit_Bt.click();
+
+
+	}
+
+	public void Job_withdaddress() throws InterruptedException {
+		driver.navigate().refresh();
+		Thread.sleep(3000);
+
+		Jobs_icon.click();
+		Thread.sleep(2000);
+
+		add_icon.click();
+		Thread.sleep(2000);
+
+		Job_allocate_icon.click();
+		Thread.sleep(2000);
+
+		team_icon.click();
+		Thread.sleep(2000);
+
+		teamName.click();
+		Thread.sleep(2000);
+
+		teamName.sendKeys("varun");
+		Thread.sleep(2000);
+
+		Officers_List.click();
+		Thread.sleep(2000);
+
+		Officers_Name.click();
+		Thread.sleep(2000);
+
+		Submit_Bt.click();
+		Thread.sleep(2000);
+
+		Paper_clip.click();
+		Thread.sleep(2000);
+
+		Calender_icon.click();
+		Thread.sleep(2000);
+
+		address_icon.sendKeys("noida");
+		Thread.sleep(2000);
+
+		From_date.click();
+		Thread.sleep(2000);
+
+		select_from_time.click();
+		Thread.sleep(2000);
+
+		To_date.click();
+		Thread.sleep(2000);
+
+		select_To_time.click();
+		Thread.sleep(2000);
+
+		submit_1.click();
+
+
+	}
+
+	public static void main() throws InterruptedException {
+
+		Nagative_case_joballocate a=new Nagative_case_joballocate();
+		a.login();
+		a.Job_allocate();
+		a.Job_withoutofficers();
+		a.Job_withInvalidname();
+		a.Job_withInvalidaddress();
+		a.Job_allocate_P ();
+		a.Job_withdaddress();
+	}
+
+}
